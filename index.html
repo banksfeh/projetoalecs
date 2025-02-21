@@ -460,21 +460,64 @@ function showSlides(n) {
 </script>
 
 <script>
-  document.addEventListener("scroll", function () {
+  function isMobile() {
+    return window.innerWidth <= 768; // Ajuste conforme necessário para considerar "mobile"
+  }
+
+  function handleScroll() {
     const textElements = document.querySelectorAll(".hidden-text");
 
     textElements.forEach((textElement) => {
-      const elementPosition = textElement.getBoundingClientRect().top; // Posição do elemento em relação à viewport
-      const windowHeight = window.innerHeight; // Altura da janela
-
-      if (elementPosition < windowHeight - 200) { // Ajuste o valor para controlar quando o texto aparece
-        textElement.classList.add("visible");
+      if (isMobile()) {
+        textElement.classList.add("visible"); // Sempre visível no mobile
       } else {
-        textElement.classList.remove("visible");
+        const elementPosition = textElement.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementPosition < windowHeight - 200) {
+          textElement.classList.add("visible");
+        } else {
+          textElement.classList.remove("visible");
+        }
       }
     });
-  });
-  </script>
+  }
+
+  document.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll); // Atualiza a visibilidade ao redimensionar a tela
+
+  document.addEventListener("DOMContentLoaded", handleScroll); // Garante a atualização inicial
+</script>
+<script>
+  function isMobile() {
+    return window.innerWidth <= 768; // Ajuste conforme necessário para considerar "mobile"
+  }
+
+  function handleScroll() {
+    const textElements = document.querySelectorAll(".hidden-text");
+
+    textElements.forEach((textElement) => {
+      if (isMobile()) {
+        textElement.classList.add("visible"); // Sempre visível no mobile
+      } else {
+        const elementPosition = textElement.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementPosition < windowHeight - 200) {
+          textElement.classList.add("visible");
+        } else {
+          textElement.classList.remove("visible");
+        }
+      }
+    });
+  }
+
+  document.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll); // Atualiza a visibilidade ao redimensionar a tela
+
+  document.addEventListener("DOMContentLoaded", handleScroll); // Garante a atualização inicial
+</script>
+
 
 </body>
 </html>
