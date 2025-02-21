@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <title>Psicanálise</title>
     <style>
+      @font-face {
+        font-family: 'Sofiapro';
+        src: url('fonts/sofiapro-light.otf') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+      }
         /* Reset */
         * {
             margin: 0;
@@ -17,63 +23,71 @@
 
         /* Layout geral */
         body {
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            background-color: #f4f4f4;
+            font-family: 'Sofiapro';
+            font-size: 20px;
+            background-color: #fff;
             color: #333;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
-        /* Navbar  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
-        nav.navbar {
-            background-color: #000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 230px;
-            z-index: 1000;
-            height: 11%;
-        }
+        .navbar {
+      display: flex;
+      position: fixed;
+      z-index: 999;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #000;
+      padding: 10px 20px;
+      width: 100%;
+    }
 
-        nav .logo img {
-            height: 70px;
-        }
+    .navbar ul {
+      list-style: none;
+      display: flex; /* Alinha itens horizontalmente */
+      margin: 0;
+      padding: 0;
+      gap: 20px; /* Espaçamento entre os itens */
+      display: none; /* Oculta o menu inicialmente */
+    }
 
-        nav ul {
-            list-style: none;
-            display:flex;
-            gap: 80px;
-            margin-right: 900px;
-        }
+    .navbar ul.show {
+      display: flex; /* Mostra o menu ao ativar o toggle */
+    }
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
+    .navbar ul li a:hover {
+      background-color: #b5a471;
+      border-radius: 5px;
+    }
 
-        nav ul li a:hover {
-            color: #e9c46a;
-        }
+    .navbar ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      transition: background 0.3s;
+    }
 
-        /* Ajustar altura do conteúdo ao navbar */
-        .spacer {
-            height: 60px;
-        }
+    .toggle-btn {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .toggle-btn span {
+      background: #b5a471;
+      height: 5px;
+      width: 40px;
+      margin: 5px 40px;
+    }
+
 
         /* Banner */
         .banner {
-            background-image: url('imagens/bannertres.png');
+            background-image: url('imagens/testesite.png');
             background-size: cover;
             background-position: center;
-            height: 800px;
+            height: 900px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -103,12 +117,19 @@
         
 
         .contact {
-            background-color: #264653;
-            color: #fff;
+          font-size: 15px;
+          background-color: #373737; /* Cor de fundo (ajuste conforme necessário) */
+          padding: 40px;
+          color: #fff;
+          border-radius: 20px 20px 0px 0px; /* Bordas arredondadas */
+          text-align: center;
+          width: 100%; /* Define uma largura para destacar a seção */
+          margin: 0 auto; /* Centraliza na tela */
         }
 
+
         .content h2 {
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
 
@@ -235,15 +256,41 @@
 }
 
         /* Responsividade */
+
+        @media (max-width: 1366px){
+        .slideshow-container {
+          max-width: 800px;
+          position: relative;
+          margin: auto;
+        }
+
+        }
+
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                margin-right: 0;
+          @media (max-width: 768px) {
+            .navbar ul {
+              display: none;
+              flex-direction: column;
+              width: 100%;
+              background-color: #000;
+              position: absolute;
+              top: 5px;
+              left: 100px;
             }
-            nav.navbar{
-              padding: 20px 50px;
+
+            .navbar ul.show {
+              display: flex;
+            }
+
+            .toggle-btn {
+              display: flex;
+            }
+
+            .toggle-btn span {
+              background: #b5a471;
+              height: 2px;
+              width: 40px;
+              margin: 5px 0px;
             }
 
             .banner {
@@ -266,44 +313,56 @@
                 font-size: 1rem;
             }
         }
+      }
     </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar">
-    <div class="logo">
-        <img src="/imagens/logoboa.png" alt="Logo">
-    </div>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#quem-sou-eu">Quem sou eu</a></li>
-        <li><a href="#contato">Contato</a></li>
-    </ul>
+  <!-- logo caso precise num futuro<div class="logo"><img src="/imagens/logoboa.png" width="60px"></div>-->
+  <div class="toggle-btn" id="toggle-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul id="menu">
+    <li><a href="#banner">Home</a></li>
+    <li><a href="#conhecendo">Conhecendo o psicólogo</a></li>
+    <li><a href="#analise">Psicanálise e Psicologia</a></li>
+    <li><a href="#sessao">Informações sobre as sessões</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
 </nav>
 
 <!-- Espaço para compensar o navbar fixo -->
 <div class="spacer"></div>
 
 <!-- Banner -->
-<div class="banner">
+<div id="banner" class="banner" style="box-shadow: 10px 10px 20px rgba(0, 0, 0, 1); border-radius: 20px;">
     <h1></h1>
 </div>
-
+&nbsp;
 <!-- Seções -->
-<section id="home" class="section intro hidden-text">
-    <div class="content">
-        <h2>Conhecendo o Psicólogo</h2>
-        <p>A Psicanálise é um método terapêutico que busca compreender os conflitos internos, emoções reprimidas e padrões de comportamento. É uma ferramenta poderosa para a transformação pessoal.</p>
-        <img src="https://via.placeholder.com/600x400?text=Psicanálise" alt="Psicanálise" style="width: 100%; max-width: 600px; border-radius: 10px;">
-    </div>
+<section id="home" class="hidden-text">
+  <div class="content" id="conhecendo">
+      <img src="/imagens/conhecendodois.png" alt="Psicanálise" 
+           style="width: 100%; 
+                  border-radius: 20px; 
+                  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);">
+  </div>
+</section>
+
+<section id="home" class="hidden-text">
+  <div class="content" id="analise">
+      <img src="/imagens/analisedois.png" alt="Psicanálise" style="width: 100%; border-radius: 20px; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);">
+  </div>
 </section>
 
 &nbsp;
 
-
 <section id="home" class="section intro hidden-text">
-  <div class="content">
+  <div class="content" id="sessao">
       <h2>Informações sobre as sessões</h2>
   </div>
 </section>
@@ -314,25 +373,25 @@
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
       <div class="numbertext"></div>
-      <img src="/imagens/portifolio/Portfólio - Dr. Alecssander-1-1.png" style="width:100%">
+      <img src="/imagens/portifolio/entrada.png" style="width:100%">
       <div class="text"></div>
     </div>
   
     <div class="mySlides fade">
       <div class="numbertext"></div>
-      <img src="/imagens/portifolio/Portfólio - Dr. Alecssander-2-1.png" style="width:100%">
+      <img src="/imagens/portifolio/foto2.jpg" style="width:100%">
       <div class="text"></div>
     </div>
   
     <div class="mySlides fade">
       <div class="numbertext"></div>
-      <img src="/imagens/portifolio/Portfólio - Dr. Alecssander-3-1.png" style="width:100%">
+      <img src="/imagens/portifolio/foto3.png" style="width:100%">
       <div class="text"></div>
     </div>
 
     <div class="mySlides fade">
       <div class="numbertext"></div>
-      <img src="/imagens/portifolio/Portfólio - Dr. Alecssander-4-1.png" style="width:100%">
+      <img src="/imagens/portifolio/foto4.jpg" style="width:100%">
       <div class="text"></div>
     </div>
   
@@ -343,7 +402,7 @@
   <br>
   
   <!-- The dots/circles -->
-  <div style="text-align:center">
+  <div style="text-align:center; margin-bottom: 50px;">
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
@@ -352,10 +411,11 @@
 
 <section id="contato" class="section contact hidden-text">
     <div class="content">
-        <h2>Agende uma sessão e comece sua jornada de autoconhecimento.</h2>
+        <h2 id="diminuir">Agende uma sessão e comece sua jornada de autoconhecimento.</h2>
         <a href="https://wa.me/5511998465133" class="whatsapp-button" target="_blank">Contate pelo WhatsApp</a>
     </div>
 </section>
+
 
 <script>
 let slideIndex = 1;
@@ -387,6 +447,16 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
+</script>
+
+<script>
+  // JavaScript para o Toggle
+  const toggleBtn = document.getElementById('toggle-btn');
+  const navbarMenu = document.getElementById('menu');
+
+  toggleBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('show');
+  });
 </script>
 
 <script>
