@@ -156,6 +156,23 @@
             background-color: #128C7E;
         }
 
+        /* Botão Instagram */ 
+        .instagram-button {
+            background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .instagram-button:hover {
+            filter: brightness(0.9);
+        }
+
         
         
 /* Slideshow container */
@@ -312,6 +329,10 @@
             .whatsapp-button {
                 font-size: 1rem;
             }
+            .instagram-button {
+              font-size: 1rem;
+            }
+
         }
       }
     </style>
@@ -346,7 +367,7 @@
 <!-- Seções -->
 <section id="home" class="hidden-text">
   <div class="content" id="conhecendo">
-      <img src="imagens/conhecendodois.png" alt="Psicanálise" 
+      <img src="imagens/conhecendodois.jpg" alt="Psicanálise" 
            style="width: 100%; 
                   border-radius: 20px; 
                   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);">
@@ -361,11 +382,7 @@
 
 &nbsp;
 
-<section id="home" class="section intro hidden-text">
-  <div class="content" id="sessao">
-      <h2>Informações sobre as sessões</h2>
-  </div>
-</section>
+
 
 <!-- Slideshow container -->
 <div class="slideshow-container hidden-text">
@@ -377,11 +394,6 @@
       <div class="text"></div>
     </div>
   
-    <div class="mySlides fade">
-      <div class="numbertext"></div>
-      <img src="imagens/portifolio/foto2.jpg" style="width:100%">
-      <div class="text"></div>
-    </div>
   
     <div class="mySlides fade">
       <div class="numbertext"></div>
@@ -404,7 +416,6 @@
   <!-- The dots/circles -->
   <div style="text-align:center; margin-bottom: 50px;">
     <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
     <span class="dot" onclick="currentSlide(4)"></span>
   </div>
@@ -413,6 +424,8 @@
     <div class="content">
         <h2 id="diminuir">Agende uma sessão e comece sua jornada de autoconhecimento.</h2>
         <a href="https://wa.me/5511998465133" class="whatsapp-button" target="_blank">Contate pelo WhatsApp</a>
+        <a href="https://www.instagram.com/psi.alecmachado/" class="instagram-button" target="_blank">Instagram</a>
+
     </div>
 </section>
 
@@ -438,7 +451,7 @@
       slides[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].className += " active";
 
-      slideTimer = setTimeout(showSlides, 3000); // Troca a cada 3 segundos
+      slideTimer = setTimeout(showSlides, 5000); // Troca a cada 3 segundos
   }
 
   function plusSlides(n) {
@@ -464,37 +477,18 @@
   toggleBtn.addEventListener('click', () => {
     navbarMenu.classList.toggle('show');
   });
+
+  document.addEventListener('click', function(event) {
+  // Verifica se está em mobile e se a navbar está aberta
+  if (window.innerWidth <= 768 && navbarMenu.classList.contains('show')) {
+    // Se o clique não for no botão de toggle
+    if (!toggleBtn.contains(event.target)) {
+      navbarMenu.classList.remove('show');
+    }
+  }
+});
 </script>
 
-<script>
-  function isMobile() {
-    return window.innerWidth <= 768; // Ajuste conforme necessário para considerar "mobile"
-  }
-
-  function handleScroll() {
-    const textElements = document.querySelectorAll(".hidden-text");
-
-    textElements.forEach((textElement) => {
-      if (isMobile()) {
-        textElement.classList.add("visible"); // Sempre visível no mobile
-      } else {
-        const elementPosition = textElement.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (elementPosition < windowHeight - 200) {
-          textElement.classList.add("visible");
-        } else {
-          textElement.classList.remove("visible");
-        }
-      }
-    });
-  }
-
-  document.addEventListener("scroll", handleScroll);
-  window.addEventListener("resize", handleScroll); // Atualiza a visibilidade ao redimensionar a tela
-
-  document.addEventListener("DOMContentLoaded", handleScroll); // Garante a atualização inicial
-</script>
 <script>
   function isMobile() {
     return window.innerWidth <= 768; // Ajuste conforme necessário para considerar "mobile"
