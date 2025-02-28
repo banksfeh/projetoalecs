@@ -429,41 +429,49 @@
 
 <script>
   let slideIndex = 0;
-  let slideTimer;
+let slideTimer;
 
-  function showSlides() {
-      let slides = document.getElementsByClassName("mySlides");
-      let dots = document.getElementsByClassName("dot");
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
 
-      for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (let i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+    }
 
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].className += " active";
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
 
-      slideTimer = setTimeout(showSlides, 5000); // Troca a cada 3 segundos
-  }
+    slides[slideIndex].style.display = "block";
+    dots[slideIndex].className += " active";
 
-  function plusSlides(n) {
-      clearTimeout(slideTimer);
-      slideIndex += n - 1;
-      showSlides();
-  }
+    slideTimer = setTimeout(() => {
+        slideIndex++;
+        showSlides();
+    }, 5000); // Troca a cada 5 segundos
+}
 
-  function currentSlide(n) {
-      clearTimeout(slideTimer);
-      slideIndex = n - 1;
-      showSlides();
-  }
+function plusSlides(n) {
+    clearTimeout(slideTimer);
+    slideIndex += n;
+    showSlides();
+}
 
-  showSlides(); // Inicia o carrossel
+function currentSlide(n) {
+    clearTimeout(slideTimer);
+    slideIndex = n - 1;
+    showSlides();
+}
+
+showSlides();
+
 </script>
 
 <script>
